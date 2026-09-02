@@ -1,8 +1,3 @@
-import type { Account, Trade } from "@/lib/types"
-
-const ACCOUNTS_KEY = "apex-tracker:accounts"
-const TRADES_KEY = "apex-tracker:trades"
-
 export const DEFAULT_ACCOUNTS: Account[] = [
   {
     id: "acc-1",
@@ -32,3 +27,8 @@ export const DEFAULT_ACCOUNTS: Account[] = [
     fundedStatus: "Active",
   },
 ]
+export function loadAccounts()
+export function loadTrades()
+export function saveAccounts()
+export function saveTrades()
+export function resetStorage()
