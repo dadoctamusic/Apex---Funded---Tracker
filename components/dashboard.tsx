@@ -74,58 +74,25 @@ export function Dashboard() {
               Reset
             </Button>
 <div className="flex gap-2">
-  <label className="cursor-pointer">
-    <input
-      type="file"
-      accept=".csv"
-      className="hidden"
-      onChange={(e) => {
-        const file = e.target.files?.[0]
-        if (file) {
-          console.log("CSV selected:", file.name)
-        }
-      }}
-    />
-<label>
-  <input
-    type="file"
-    accept=".csv"
-    hidden
-    onChange={(e) => {
-      const file = e.target.files?.[0]
-      if (!file) return
-
-      const reader = new FileReader()
-
-      reader.onload = (event) => {
-        const csvText = event.target?.result as string
-
-        console.log(csvText)
-
-        alert(`Loaded ${file.name}`)
-      }
-
-      reader.readAsText(file)
-    }}
-  />
-
-  <Button size="sm" variant="outline" asChild>
-    <span>Import CSV</span>
-  </Button>
-</label>
-  </label>
-
-<div className="flex gap-2">
   <label>
     <input
       type="file"
       accept=".csv"
-      className="hidden"
+      hidden
       onChange={(e) => {
         const file = e.target.files?.[0]
-        if (file) {
-          alert(`Selected: ${file.name}`)
+        if (!file) return
+
+        const reader = new FileReader()
+
+        reader.onload = (event) => {
+          const csvText = event.target?.result as string
+
+          console.log(csvText)
+          alert(`Loaded ${file.name}`)
         }
+
+        reader.readAsText(file)
       }}
     />
 
@@ -133,6 +100,12 @@ export function Dashboard() {
       <span>Import CSV</span>
     </Button>
   </label>
+
+  <Button size="sm" onClick={() => openAdd()}>
+    <PlusIcon data-icon="inline-start" />
+    Add Trade
+  </Button>
+</div>
 
   <Button size="sm" onClick={() => openAdd()}>
     <PlusIcon data-icon="inline-start" />
