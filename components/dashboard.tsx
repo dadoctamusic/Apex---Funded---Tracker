@@ -75,30 +75,37 @@ export function Dashboard() {
   </Button>
 
   <label>
-    <input
-      type="file"
-      accept=".csv"
-      hidden
-      onChange={(e) => {
-        const file = e.target.files?.[0]
-        if (!file) return
+<input
+  id="csv-upload"
+  type="file"
+  accept=".csv"
+  hidden
+  onChange={(e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
 
-        const reader = new FileReader()
+    const reader = new FileReader()
 
-        reader.onload = (event) => {
-          const csvText = event.target?.result as string
+    reader.onload = (event) => {
+      const csvText = event.target?.result as string
 
-          console.log(csvText)
-          alert(`Loaded ${file.name}`)
-        }
+      console.log(csvText)
+      alert(`Loaded ${file.name}`)
+    }
 
-        reader.readAsText(file)
-      }}
-    />
+    reader.readAsText(file)
+  }}
+/>
 
-    <Button size="sm" variant="outline" asChild>
-      <span>Import CSV</span>
-    </Button>
+<Button
+  size="sm"
+  variant="outline"
+  onClick={() => {
+    document.getElementById("csv-upload")?.click()
+  }}
+>
+  Import CSV
+</Button>
   </label>
 
   <Button size="sm" onClick={() => openAdd()}>
