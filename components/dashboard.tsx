@@ -91,10 +91,30 @@ export function Dashboard() {
     </Button>
   </label>
 
+<div className="flex gap-2">
+  <label>
+    <input
+      type="file"
+      accept=".csv"
+      className="hidden"
+      onChange={(e) => {
+        const file = e.target.files?.[0]
+        if (file) {
+          alert(`Selected: ${file.name}`)
+        }
+      }}
+    />
+
+    <Button size="sm" variant="outline" asChild>
+      <span>Import CSV</span>
+    </Button>
+  </label>
+
   <Button size="sm" onClick={() => openAdd()}>
     <PlusIcon data-icon="inline-start" />
     Add Trade
   </Button>
+</div>
 </div>
           </div>
         </div>
