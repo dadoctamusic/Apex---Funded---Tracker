@@ -64,55 +64,8 @@ export function Dashboard() {
               </p>
             </div>
           </div>
+
 <div className="flex items-center gap-2">
-  <Button
-    variant="outline"
-    size="sm"
-    onClick={() => setResetOpen(true)}
-  >
-    <RotateCcwIcon data-icon="inline-start" />
-    Reset
-  </Button>
-
-  <label>
-<input
-  id="csv-upload"
-  type="file"
-  accept=".csv"
-  hidden
-  onChange={(e) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-
-    const reader = new FileReader()
-
-    reader.onload = (event) => {
-      const csvText = event.target?.result as string
-
-      console.log(csvText)
-      alert(`Loaded ${file.name}`)
-    }
-
-    reader.readAsText(file)
-  }}
-/>
-
-<Button
-  size="sm"
-  variant="outline"
-  onClick={() => {
-    document.getElementById("csv-upload")?.click()
-  }}
->
-  Import CSV
-</Button>
-  </label>
-
-  <Button size="sm" onClick={() => openAdd()}>
-    <PlusIcon data-icon="inline-start" />
-    Add Trade
-  </Button>
-</div><div className="flex items-center gap-2">
   <Button
     variant="outline"
     size="sm"
