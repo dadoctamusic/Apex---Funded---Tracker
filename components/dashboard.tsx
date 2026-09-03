@@ -64,16 +64,16 @@ export function Dashboard() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setResetOpen(true)}
-            >
-              <RotateCcwIcon data-icon="inline-start" />
-              Reset
-            </Button>
-<div className="flex gap-2">
+<div className="flex items-center gap-2">
+  <Button
+    variant="outline"
+    size="sm"
+    onClick={() => setResetOpen(true)}
+  >
+    <RotateCcwIcon data-icon="inline-start" />
+    Reset
+  </Button>
+
   <label>
     <input
       type="file"
@@ -101,13 +101,10 @@ export function Dashboard() {
     </Button>
   </label>
 
-</div>
-
   <Button size="sm" onClick={() => openAdd()}>
     <PlusIcon data-icon="inline-start" />
     Add Trade
   </Button>
-</div>
 </div>
           </div>
         </div>
