@@ -83,10 +83,20 @@ export function Dashboard() {
 onChange={(e) => {
   alert("CSV button reached")
 
-  const file = e.target.files?.[0]
-  if (!file) return
+const file = e.target.files?.[0]
+if (!file) return
+
+const reader = new FileReader()
+
+reader.onload = (event) => {
+  const csvText = event.target?.result as string
+
+  console.log(csvText)
 
   alert(`Loaded ${file.name}`)
+}
+
+reader.readAsText(file)
 }}
   />
 
