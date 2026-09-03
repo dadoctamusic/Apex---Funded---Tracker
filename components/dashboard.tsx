@@ -112,6 +112,43 @@ export function Dashboard() {
     <PlusIcon data-icon="inline-start" />
     Add Trade
   </Button>
+</div><div className="flex items-center gap-2">
+  <Button
+    variant="outline"
+    size="sm"
+    onClick={() => setResetOpen(true)}
+  >
+    <RotateCcwIcon data-icon="inline-start" />
+    Reset
+  </Button>
+
+  <input
+    id="csv-upload"
+    type="file"
+    accept=".csv"
+    hidden
+    onChange={(e) => {
+      const file = e.target.files?.[0]
+      if (!file) return
+
+      alert(`Loaded ${file.name}`)
+    }}
+  />
+
+  <Button
+    size="sm"
+    variant="outline"
+    onClick={() => {
+      document.getElementById("csv-upload")?.click()
+    }}
+  >
+    Import CSV
+  </Button>
+
+  <Button size="sm" onClick={() => openAdd()}>
+    <PlusIcon data-icon="inline-start" />
+    Add Trade
+  </Button>
 </div>
           </div>
       </header>
