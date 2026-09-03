@@ -107,7 +107,6 @@ export function Dashboard() {
   </Button>
 </div>
           </div>
-        </div>
       </header>
 
       <main className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 md:px-6">
