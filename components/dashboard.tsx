@@ -73,10 +73,29 @@ export function Dashboard() {
               <RotateCcwIcon data-icon="inline-start" />
               Reset
             </Button>
-            <Button size="sm" onClick={() => openAdd()}>
-              <PlusIcon data-icon="inline-start" />
-              Add Trade
-            </Button>
+<div className="flex gap-2">
+  <label className="cursor-pointer">
+    <input
+      type="file"
+      accept=".csv"
+      className="hidden"
+      onChange={(e) => {
+        const file = e.target.files?.[0]
+        if (file) {
+          console.log("CSV selected:", file.name)
+        }
+      }}
+    />
+    <Button size="sm" variant="outline">
+      Import CSV
+    </Button>
+  </label>
+
+  <Button size="sm" onClick={() => openAdd()}>
+    <PlusIcon data-icon="inline-start" />
+    Add Trade
+  </Button>
+</div>
           </div>
         </div>
       </header>
