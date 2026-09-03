@@ -24,7 +24,7 @@ import { toast } from "sonner"
 import { PlusIcon, RotateCcwIcon, ActivityIcon } from "lucide-react"
 
 export function Dashboard() {
-  const { accounts, trades, hydrated, resetAll } = useTracker()
+  const { accounts, trades, hydrated, resetAll, addTrade } = useTracker()
   const [tab, setTab] = React.useState("all")
   const [addOpen, setAddOpen] = React.useState(false)
   const [addAccountId, setAddAccountId] = React.useState<string | undefined>()
