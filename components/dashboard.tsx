@@ -80,12 +80,14 @@ export function Dashboard() {
     type="file"
     accept=".csv"
     hidden
-    onChange={(e) => {
-      const file = e.target.files?.[0]
-      if (!file) return
+onChange={(e) => {
+  alert("CSV button reached")
 
-      alert(`Loaded ${file.name}`)
-    }}
+  const file = e.target.files?.[0]
+  if (!file) return
+
+  alert(`Loaded ${file.name}`)
+}}
   />
 
   <Button
