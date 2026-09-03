@@ -101,10 +101,6 @@ export function Dashboard() {
     </Button>
   </label>
 
-  <Button size="sm" onClick={() => openAdd()}>
-    <PlusIcon data-icon="inline-start" />
-    Add Trade
-  </Button>
 </div>
 
   <Button size="sm" onClick={() => openAdd()}>
