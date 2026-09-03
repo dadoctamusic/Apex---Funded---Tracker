@@ -86,9 +86,33 @@ export function Dashboard() {
         }
       }}
     />
-    <Button size="sm" variant="outline">
-      Import CSV
-    </Button>
+<label>
+  <input
+    type="file"
+    accept=".csv"
+    hidden
+    onChange={(e) => {
+      const file = e.target.files?.[0]
+      if (!file) return
+
+      const reader = new FileReader()
+
+      reader.onload = (event) => {
+        const csvText = event.target?.result as string
+
+        console.log(csvText)
+
+        alert(`Loaded ${file.name}`)
+      }
+
+      reader.readAsText(file)
+    }}
+  />
+
+  <Button size="sm" variant="outline" asChild>
+    <span>Import CSV</span>
+  </Button>
+</label>
   </label>
 
 <div className="flex gap-2">
