@@ -1,3 +1,8 @@
+import type { Account, Trade } from "@/lib/types"
+
+const ACCOUNTS_KEY = "apex-tracker:accounts"
+const TRADES_KEY = "apex-tracker:trades"
+
 export const DEFAULT_ACCOUNTS: Account[] = [
   {
     id: "acc-1",
@@ -20,15 +25,54 @@ export const DEFAULT_ACCOUNTS: Account[] = [
   {
     id: "acc-3",
     name: "Account C",
-    startingBalance: 25251.70,
+    startingBalance: 25251.7,
     trailingThreshold: 24000,
     dailyLossLimit: 1000,
     maxDrawdown: 1500,
     fundedStatus: "Active",
   },
 ]
-export function loadAccounts()
-export function loadTrades()
-export function saveAccounts()
-export function saveTrades()
-export function resetStorage()
+
+export const DEFAULT_TRADES: Trade[] = []
+
+function isBrowser(): boolean {
+  return typeof window !== "undefined"
+}
+
+export function loadAccounts(): Account[] {
+  if (!isBrowser()) return DEFAULT_ACCOUNTS
+  try {
+    const raw = window.localStorage.getItem(ACCOUNTS_KEY)
+    if (!raw) return DEFAULT_ACCOUNTS
+    return JSON.parse(raw) as Account[]
+  } catch {
+    return DEFAULT_ACCOUNTS
+  }
+}
+
+export function loadTrades(): Trade[] {
+  if (!isBrowser()) return DEFAULT_TRADES
+  try {
+    const raw = window.localStorage.getItem(TRADES_KEY)
+    if (!raw) return DEFAULT_TRADES
+    return JSON.parse(raw) as Trade[]
+  } catch {
+    return DEFAULT_TRADES
+  }
+}
+
+export function saveAccounts(accounts: Account[]): void {
+  if (!isBrowser()) return
+  window.localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts))
+}
+
+export function saveTrades(trades: Trade[]): void {
+  if (!isBrowser()) return
+  window.localStorage.setItem(TRADES_KEY, JSON.stringify(trades))
+}
+
+export function resetStorage(): void {
+  if (!isBrowser()) return
+  window.localStorage.removeItem(ACCOUNTS_KEY)
+  window.localStorage.removeItem(TRADES_KEY)
+}
